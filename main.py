@@ -95,8 +95,8 @@ def one(message):
     global one
     if main:
         markup = telebot.types.InlineKeyboardMarkup()
-        btn_1 = telebot.types.InlineKeyboardButton('Глубже в лес', callback_data='btn_5')
-        btn_2 = telebot.types.InlineKeyboardButton('К озеру', callback_data='btn_6')
+        btn_1 = telebot.types.InlineKeyboardButton('Сильная мана у озера', callback_data='btn_5')
+        btn_2 = telebot.types.InlineKeyboardButton('Протопная Эльфами тропинка', callback_data='btn_6')
         markup.add(btn_1, btn_2)
         bot.send_message(message.chat.id, 'mrvkl', reply_markup=markup)
         one = 1
