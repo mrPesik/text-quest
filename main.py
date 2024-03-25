@@ -17,7 +17,7 @@ bot = telebot.TeleBot(token)
 def func(callback):
     if callback.data == 'btn_1' or callback.data == 'btn_3' or callback.data == 'btn_2' or callback.data == 'btn_4':
         func_1(callback)
-    if callback.data == 'btn_5' or callback.data == 'btn_6' or callback.data == 'btn_7' or callback.data == 'btn_8' or callback.data == 'btn_9' or callback.data == 'btn_10' or callback.data == 'btn_11' or callback.data == 'btn_12':
+    if callback.data == 'btn_5' or callback.data == 'btn_6' or callback.data == 'btn_7' or callback.data == 'btn_8' or callback.data == 'btn_9' or callback.data == 'btn_10' or callback.data == 'btn_11' or callback.data == 'btn_12' or callback.data == 'btn_13' or callback.data == 'btn_14' or callback.data == 'btn_15' or callback.data == 'btn_16':
         func_2(callback)
 # Первая локация, начало истории*******************************************************************
 
@@ -144,6 +144,7 @@ def func_2(callback):
         bot.register_next_step_handler(callback.message, story_2)
     elif callback.data == 'btn_8':
         bot.send_message(callback.message.chat.id, 'Отправившись в лес спасаем Эльфийку и попадаем в деревню.')
+        bot.register_next_step_handler(callback.message, story_2)
     elif callback.data == 'btn_10':
         bot.send_message(callback.message.chat.id, 'Теряем сознание и просыпаемся в деревне.')
         bot.register_next_step_handler(callback.message, story_2)
@@ -155,9 +156,35 @@ def func_2(callback):
         bot.send_message(callback.message.chat.id, '+')
         bot.send_message(callback.message.chat.id, 'Герой получает эликсир. После помощи дух озера освобождается и наградив героя, отправляет его назад. Встретив Эльфов с помощью полученного ранее эликсира он спасает старосту и узнает нужную информацию.')
         lst.append('+')
+    elif callback.data == 'btn_13':
+        markup = telebot.types.InlineKeyboardMarkup()
+        btn_1 = telebot.types.InlineKeyboardButton('Договориться с врагами', callback_data='btn_15')
+        btn_2 = telebot.types.InlineKeyboardButton('Сразится с ними', callback_data='btn_16')
+        markup.add(btn_1, btn_2)
+        bot.send_message(callback.message.chat.id, 'Попадаем в храм эликсира')
+        bot.send_message(callback.message.chat.id, 'Встречаем бандитов', reply_markup=markup)
+    elif callback.data == 'btn_14':
+        markup = telebot.types.InlineKeyboardMarkup()
+        btn_1 = telebot.types.InlineKeyboardButton('Договориться с врагами', callback_data='btn_15')
+        btn_2 = telebot.types.InlineKeyboardButton('Сразится с ними', callback_data='btn_16')
+        markup.add(btn_1, btn_2)
+        bot.send_message(callback.message.chat.id, 'Знакомимся с парочкой Эльфов и на след утро отправляемся в храм')
+        bot.send_message(callback.message.chat.id, 'Встречаем бандитов', reply_markup=markup)
+    elif callback.data == 'btn_15':
+        bot.send_message(callback.message.chat.id, 'Получаем элтксир спасаем главаря и спасаем главного и получаем инфу')
+        lst.append('-')
+    elif callback.data == 'btn_16':
+        bot.send_message(callback.message.chat.id,
+                         'Получаем элтксир спасаем главаря и спасаем главного и получаем инфу')
+        lst.append('+')
 def story_2(message):
     if message.text:
-        bot.send_message(message.chat.id, 'Встречаемся с больным главарём узнаем цель: Добыча эликсира и спасение главаря. Пойти сразу или отдохнуть?')
+        markup = telebot.types.InlineKeyboardMarkup()
+        btn_1 = telebot.types.InlineKeyboardButton('Пойти сразу', callback_data='btn_13')
+        btn_2 = telebot.types.InlineKeyboardButton('Отдохнуть', callback_data='btn_14')
+        markup.add(btn_1, btn_2)
+        bot.send_message(message.chat.id, 'Встречаемся с больным главарём узнаем цель: Добыча эликсира и спасение главаря. Пойти сразу или отдохнуть?', reply_markup=markup)
+
 
 
 
