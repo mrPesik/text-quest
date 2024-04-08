@@ -20,8 +20,9 @@ def func(callback):
         func_1(callback)
     if callback.data == 'btn_5' or callback.data == 'btn_6' or callback.data == 'btn_7' or callback.data == 'btn_8' or callback.data == 'btn_9' or callback.data == 'btn_10' or callback.data == 'btn_11' or callback.data == 'btn_12' or callback.data == 'btn_13' or callback.data == 'btn_14':
         func_2(callback)
+    if callback.data == 'btn_15' or callback.data == 'btn_16':
+        func_3(callback)
 # Первая локация, начало истории*******************************************************************
-
 
 
 @bot.message_handler(commands=['start'])
@@ -52,6 +53,7 @@ def start_story(message):
 @bot.callback_query_handler(func=lambda callback: True)
 def func_1(callback):
     if callback.data == 'btn_1':
+        bot.delete_message(callback.message.chat.id, callback.message.message_id)
         markup = telebot.types.InlineKeyboardMarkup()
         btn_1 = telebot.types.InlineKeyboardButton('Вступить в драку', callback_data='btn_3')
         btn_2 = telebot.types.InlineKeyboardButton('Не рисковать', callback_data='btn_4')
@@ -61,10 +63,12 @@ def func_1(callback):
                          'довольно таинственно. Подходя к вам они двухсмыслено спрашивают не будет ли у вас пару монет, из под плаща вы можете заметить ручку кинжала. Вы начинаете оценивать их и думать как именно вам поступить.',
                          reply_markup=markup)
     elif callback.data == 'btn_3':
+        bot.delete_message(callback.message.chat.id, callback.message.message_id)
         bot.send_message(callback.message.chat.id, 'Вы решаете не дожидаться пока они нападут и наносите удар первым. В ходе драки один из бандитов пытается достать кинжал, вы выбиваете кинжал из его рук но при этом не успеваете отразить удар другого бандита. Удар попадает прямо вам в грудь, не смотря на это вам удаётся перехватить инициативу в драке и в последующем победить. Побежденые бандиты быстро уносят ноги и совсем скоро скрываются из виду. Думая о том как не легко далась вам эта победа вы начинаете идти домой. Почти дойдя до дома вы вспоминаете о пропущеном ударе из-за чего в последствии вы замечаете что Медальон разбился. Прийдя домой и обработав раны вы идёте в свою комнату. Усталость сильно сказывается на вас и вы сами того не замечаю погружаетесь в сон.')
         bot.send_message(callback.message.chat.id, "Для продолжения введите ваше имя:")
         bot.register_next_step_handler(callback.message, story)
     elif callback.data == 'btn_4':
+        bot.delete_message(callback.message.chat.id, callback.message.message_id)
         bot.send_message(callback.message.chat.id,
                          'Оценив их вы решаете не влезать в драку и послушать их. Вы лезите в карман за имеющимися у вас деньгами как в этот момент в ваше лицо прилитает удар. Падая на землю вы можете замечаете следующий удар. У вас получается парировать его, но бандит резко бьёт вас ногой. Удар попадает вам прямо в грудь. Последнее что вы успеете заметить это летащий в вашу сторону удар ногой. Вы теряете сознание.')
         sleep(10)
@@ -73,6 +77,7 @@ def func_1(callback):
         bot.send_message(callback.message.chat.id, "Для продолжения введите ваше имя:")
         bot.register_next_step_handler(callback.message, story)
     elif callback.data == 'btn_2':
+        bot.delete_message(callback.message.chat.id, callback.message.message_id)
         photo = open('images/msg1382091016-32487.jpg', 'rb')
         bot.send_photo(callback.message.chat.id, photo,  caption='Вы решаете не напрягаться и пойти выпить в баре. Прийдя в бар вы заказываете напиток и начинаете разговор с барменом. Выпив ещё пару кружек к вам подсаживаются несколько незнакомых вам людей. У вас завязывается разговор. Хорошенько выпив вместе ваши собеседники собираются уходить, но в этот момент бармен окликивает вас и говорит о краже Медальона. Вы резко отдергиваете одного из них, в попытках вырваться вор выбрасывает Медальон и ему удаётся сбежать. Спустя пару минут вы успокоившись благодарите бармена     и собираясь уходить домой вспоминаете о выбрашеном бандитом Медальоне.')
         sleep(20)
@@ -108,6 +113,7 @@ def one(message):
         markup.add(btn_1, btn_2)
 
         bot.send_message(message.chat.id, 'Спустя месяц ваших странствий в одном из городов вы услышали новость о Лесу Эльфов, вспомнив старые книги прочитанные вами ещё в молодости вы вспоминаете о продолжительности жизни Эльфов измеряемой веками. Вы понимаете что если кто-то и слышал о Проклятом Королевстве, то это будут Эльфы. Отправившись в путь вы без проблем добираетесь до леса спустя пару дней.')
+        sleep(5)
         bot.send_message(message.chat.id, 'Заходя на территорию Эльфов вы чувствуете сильную ману содержащуюся в этих землях. Вы вспоминаете о своих тренировках в пути,за последний месяц тренировок вы достигли не плохих результатов. Хоть до звания мастера вам ещё очень далеко. Погрузившись в мысли вы не замечаете как заходите в лес. Оторвавшись от своих мыслей вы чувствуете сильную ману в стороне озера. В глубине леса вы замечаете протоптоную дорожку. По ней явно когда-то ходили Эльфы. Вы думаете куда вам отправиться?', reply_markup=markup)
     else:
         bot.send_message(message.chat.id, 'Для прохождения этой главы пройдите /start')
@@ -116,6 +122,7 @@ def one(message):
 @bot.callback_query_handler(func=lambda callback: True)
 def func_2(callback):
     if callback.data == 'btn_5':
+        bot.delete_message(callback.message.chat.id, callback.message.message_id)
         markup = telebot.types.InlineKeyboardMarkup()
         btn_1 = telebot.types.InlineKeyboardButton('Пойти на помощь', callback_data='btn_8')
         btn_2 = telebot.types.InlineKeyboardButton('Изучит ману', callback_data='btn_7')
@@ -125,6 +132,7 @@ def func_2(callback):
 
 
     elif callback.data == 'btn_6':
+        bot.delete_message(callback.message.chat.id, callback.message.message_id)
         markup = telebot.types.InlineKeyboardMarkup()
         btn_1 = telebot.types.InlineKeyboardButton('да', callback_data='btn_9')
         btn_2 = telebot.types.InlineKeyboardButton('нет', callback_data='btn_10')
@@ -132,6 +140,7 @@ def func_2(callback):
         photo = open('images/msg1382091016-32486.jpg', 'rb')
         bot.send_photo(callback.message.chat.id, photo, caption='Пойдя по тропинке вы до ночи блуждает по лесу. Понимая что уже темнеет вы решаете разбить лагерь. Вы отправляетесь за хворостом для костра. По дороге обратно в кустах справа вы слышите шум. Подойдя к нему вы ничего не замечаете, собираясь разворачиваться вы чувствуете как к вашей спине приставили клинок. Неизвестные спрашивают кто вы. Рассказав о своих целях в поиске деревни Эльфов вам дают развернуться. В темноте перед собой вы умудряетесь разглядеть черты лица собеседников. Вы видите длинные уши и светлые волосы, к вам приходит осознание о расе ваших собеседников. Узнав ваши цели Эльфы предлагают вам вместе переночевать и сутра отправиться в деревню. Вы знакомы с ними всего несколько минут, верным ли решением будет оставаться с ними на ночлег под одной крышей?', reply_markup=markup)
     elif callback.data == 'btn_7':
+        bot.delete_message(callback.message.chat.id, callback.message.message_id)
         photo = open('images/msg1382091016-33313.jpg', 'rb')
         bot.send_photo(callback.message.chat.id, photo, caption='Собирая всю ману в руке над водой,  вы решаете что лучше остаться у озера. Понимая что ничего не случилось вы уже собираетесь уходить как понимаете что вы не в лесу. Вы пытаетесь понять где именно находитесь. В округ только тьма, а под ногами вода. Неожиданно перед вами появляется неизвестное существо. Оно представляется духом Озера и говорит что для выхода нужно отгадать загадку. Соглашаясь вы слушаете загадку.')
         bot.send_message(callback.message.chat.id, 'Весной и летом,'
@@ -141,38 +150,52 @@ def func_2(callback):
                          )
         bot.register_next_step_handler(callback.message, story_1)
     elif callback.data == 'btn_9':
+        bot.delete_message(callback.message.chat.id, callback.message.message_id)
         photo = open('images/msg1382091016-33282.jpg', 'rb')
         bot.send_photo(callback.message.chat.id, photo, caption='Согласившись вы вместе разбиваете лагерь и весело проводите время. С утра вы просыпаетесь, и отправляетесь в путь.')
+        sleep(3)
         story_2(callback.message)
     elif callback.data == 'btn_8':
+        bot.delete_message(callback.message.chat.id, callback.message.message_id)
         bot.send_message(callback.message.chat.id, 'Жизнь человека важнее какой-то маны, думаете вы приближаясь к источнику шума. Добравшись до места предвами предстаёт картина, группа диких зверей окружила беззащитную девушку. Используя изученую вами ранее магию ветра вам удаётся привлечь внимание зверей на себя. Отвлекаясь на вас, звери забывают про девушку и ей удаётся добраться до безопасного места. Вы используете смешаную магию земли и огня, в итоге с легкостью расправляясь с животными. После окончания боя вы подходите к девушке и понимаете что она Эльф. Девушка благодарит вас и рассказывает вам о том как вышла собирать ягоды и сама не заметила как ушла от деревни, после чего на неё напали животные. Узнав о том что девушка из деревни вы так-же рассказываете ей о своих планах и она предлагает вам пойти вместе. Вы соглашаетесь и отправляетесь в путь.')
+        sleep(10)
         story_2(callback.message)
     elif callback.data == 'btn_10':
+        bot.delete_message(callback.message.chat.id, callback.message.message_id)
         bot.send_message(callback.message.chat.id, 'Решив что ночевать с неизвестными вам людьми это такая себе идея, вы вежливо отказываетесь и уходите ночевать один. По наступлению утра вы собираете вещи и отправляетесь на поиски деревни. Бродя по лесу уже пол дня вы начинаете задумываться о верности решения остаться одному. Погрузившись в мысли вы не замечаете как проходите странный кусок дороги, после чего дряхлая земля под вашими ногами проваливается и вы теряете сознание.')
+        sleep(8)
         bot.send_message(callback.message.chat.id, 'Вы просыпаетесь в холодном поту. Не понимая где вы находитесь, вы решаете осматреться. Вы понимаете что находитесь в хижине, и замечаете аккуратно перебентованую ногу. Через полчаса к вам приходит девушка, вы понимаете что это Эльф. Девушка рассказывает вам о том как нашла вас в яме посреди леса и привела в деревню. Вы благодарите её и уходите. Выйдя вы оказываетесь посреди деревни Эльфов.')
+        sleep(3)
         story_2(callback.message)
     elif callback.data == 'btn_11':
+        bot.delete_message(callback.message.chat.id, callback.message.message_id)
         bot.send_message(callback.message.chat.id, 'Решив не рисковать вы используете магию и выходите к бандитам. Бандиты хватаются за оружие и спрашивают кто вы. Благодаря магии вам удаётся убедить бандитов что вы их босс и вам необходимо забрать эликсир. Бандиты складывают оружие и пропускают вас.')
         lst.append('-')
         end_story_2(callback.message)
     elif callback.data == 'btn_12':
+        bot.delete_message(callback.message.chat.id, callback.message.message_id)
         bot.send_message(callback.message.chat.id, 'Вы нападаете на одного из бандитов магией ветра и вырубаете его. Другие хватаются за оружие и нападают на вас. Спустя некоторое время вы распровляетесь со всеми бандитами, хоть это и было тяжело. Убедившись что все бандиты повержены вы идёте дальше.')
         lst.append('+')
         end_story_2(callback.message)
     elif callback.data == 'btn_13':
+        bot.delete_message(callback.message.chat.id, callback.message.message_id)
         markup = telebot.types.InlineKeyboardMarkup()
         btn_1 = telebot.types.InlineKeyboardButton('Использовать запретную магию и повлиять на ум бандитов', callback_data='btn_11')
         btn_2 = telebot.types.InlineKeyboardButton('Вступить в бой', callback_data='btn_12')
-        markup.add(btn_1, btn_2)
+        markup.row(btn_1)
+        markup.row(btn_2)
         bot.send_message(callback.message.chat.id, 'Вы решаете что нельзя терять ни секунды и отправляетесь в путь.')
         bot.send_message(callback.message.chat.id, 'Спустя три дня и три ночи, на четвёртый день вы доходите до нужного вам места. Вы чувствуете сильную ману и отправляетесь в том направлении. Пройдя дальше, спереди вы замечаете движения. Подойдя ближе вы видите бандитов о которых говорила заместитель. В далеке за их спинами вы видите цель ваших скитаний, священное древо. Оценивая ситуацию и численный перевес противника, вы думаете как лучше вам следует поступить.', reply_markup=markup)
     elif callback.data == 'btn_14':
+        bot.delete_message(callback.message.chat.id, callback.message.message_id)
         markup = telebot.types.InlineKeyboardMarkup()
         btn_1 = telebot.types.InlineKeyboardButton('Использовать запретную магию и повлиять на ум бандитов', callback_data='btn_11')
         btn_2 = telebot.types.InlineKeyboardButton('Вступить в бой', callback_data='btn_12')
-        markup.add(btn_1, btn_2)
+        markup.row(btn_1)
+        markup.row(btn_2)
         photo = open('images/msg1382091016-33266.jpg', 'rb')
         bot.send_photo(callback.message.chat.id, photo, caption='Решив отдохнуть после столь долго пути вы отправляетесь осматривать деревню. Спустя пол часа вы находите места с большим количеством людей. Вы проходите внутрь и понимаете что это паб. Вы заказываете выпить и хорошо проводите вечер, заведя себе пару новых друзей. По утру вы собираете вещи и отправляетесь в путь.')
+        sleep(7)
         bot.send_message(callback.message.chat.id, 'Спустя три дня и три ночи, на четвёртый день вы доходите до нужного вам места. Вы чувствуете сильную ману и отправляетесь в том направлении. Пройдя дальше, спереди вы замечаете движения. Подойдя ближе вы видите бандитов о которых говорила заместитель. В далеке за их спинами вы видите цель ваших скитаний, священное древо. Оценивая ситуацию и численный перевес противника, вы думаете как лучше вам следует поступить.', reply_markup=markup)
 
 
@@ -193,16 +216,22 @@ def story_1(message):
         markup = telebot.types.InlineKeyboardMarkup()
         btn_1 = telebot.types.InlineKeyboardButton('Использовать запретную магию и повлиять на ум бандитов', callback_data='btn_11')
         btn_2 = telebot.types.InlineKeyboardButton('Вступить в бой', callback_data='btn_12')
-        markup.add(btn_1, btn_2)
-        bot.send_message(message.chat.id, 'Дух сообщает вам о правильности ответа. Вы ответили правильно. Дух просит вас о помощи. Он рассказывает вам о проклятье наложеном на него, и об священном древе способном его снять. На вопрос вашей выгоды дух рассказывает вам о Эликсире хранящемся в ветвях древа. Вы соглашаетесь помочь, дух благодарит и переносит вас обратно в лес. Указывая на направление к древу дух сообщает о его охране. Вы прощаетесь с ним и отправляетесь в путь.')
+        markup.row(btn_1)
+        markup.row(btn_2)
+        bot.send_message(message.chat.id, 'Дух сообщает вам о правильности ответа. Вы ответили правильно. Дух просит вас о помощи. Он рассказывает вам о проклятье наложеном на него, и об священном древе способном его снять. На вопрос вашей выгоды дух рассказывает вам о Эликсире хранящемся в ветвях древа. Так же дух говорит что Эликсир понадобиться вам позже.Вы соглашаетесь помочь, дух благодарит и переносит вас обратно в лес. Указывая на направление к древу дух сообщает о его охране. Дух говорит что как только последний бандит падёт, он станет свободен и вернётся в мир духов. Так что заранее благодарит вас за помощь и прощается.Вы также прощаетесь с ним и отправляетесь в путь.')
+        sleep(15)
         bot.send_message(message.chat.id, 'Спустя три дня и три ночи, на четвёртый день вы доходите до нужного вам места. Вы чувствуете сильную ману и отправляетесь в том направлении. Пройдя дальше, спереди вы замечаете движения. Подойдя ближе вы видите бандитов о которых говорила заместитель. В далеке за их спинами вы видите цель ваших скитаний, священное древо. Оценивая ситуацию и численный перевес противника, вы думаете как лучше вам следует поступить.', reply_markup=markup)
     else:
         bot.send_message(message.chat.id, 'Вы неправильно отвечаете на загадку. Дух говорит что значит время ещё не пришло. Согласившись помочь вам дух указывает направление к деревне и прощается. Вы ещё раз обдумываете загадку, но так и не прейдя к ответу отправляетесь в указаную духом сторону.')
         story_2(message)
 def end_story_2(message):
+    global one
     photo = open('images/msg1382091016-33301.jpg', 'rb')
+
     bot.send_photo(message.chat.id, photo, caption='Подходя к древу вы достаёте колбу для эликсира, ломаете ветку и собираете Эликсир. Немного отдохнув вы отправляетесь обратно в деревню.')
+    sleep(4)
     bot.send_message(message.chat.id, 'Прибыв в деревню вы приходите к заместителю и вручаете полученую колбу. Заместитель удивляется но не терея времени отправляется к старцу. По прошествию пары часов, Заместитель зовёт вас внутрь. Вы заходите и подходите к старейшине и представляетесь. Он говорит что знает кто вы и что вам нужно, также благодаря вас за спасение. Вы узнаете у старейшины нужную вам информацию и попрощавшись говорите что останетесь переночевать а сутра отправитесь в путь. Выйдя вы отправляетесь в отель где снимаете комнату и быстро засыпаете.')
+    sleep(10)
     bot.send_message(message.chat.id, 'Во сне вы снова видите Грея.Он хвалит ваши успех и говорит так и продолжать.У вас много вопрос, но так же и мало времени. Вы спрашиваете его о прошлом вашей семьи и о том как она стала семьёй великих магов. Грэй рассказывает вам долгую историю длиною в поколения. Получив ответ вы благодарите Грэя и прощаетесь. Грэй так же прощается, но говорит что вы ещё встретитесь. Проснувшись вы собираете вещи, прощаетесь с новыми друзьями и отправляетесь в путь. Вас ждёт ещё долгое приключение.')
     one = 1
 
@@ -214,12 +243,30 @@ def end_story_2(message):
 # Пустыня Орков***********************************************************************************************************************
 @bot.message_handler(commands=['2'])
 def two(message):
-    global two
     if main:
-        pass
-        two = 1
+        markup = telebot.types.InlineKeyboardMarkup()
+        btn_1 = telebot.types.InlineKeyboardButton('111111111111', callback_data='btn_15')
+        btn_2 = telebot.types.InlineKeyboardButton('222222222222', callback_data='btn_16')
+        markup.add(btn_1, btn_2)
+        bot.send_message(message.chat.id, '******************', reply_markup=markup)
     else:
         bot.send_message(message.chat.id, 'Для прохождения этой главы пройдите /start')
+
+
+@bot.callback_query_handler(func=lambda callback: True)
+def func_3(callback):
+    if callback.data == 'btn_15':
+        bot.delete_message(callback.message.chat.id, callback.message.message_id)
+        bot.send_message(callback.message.chat.id, '3333333333')
+        story_3(callback.message)
+    if callback.data == 'btn_16':
+        bot.delete_message(callback.message.chat.id, callback.message.message_id)
+        bot.send_message(callback.message.chat.id, '4444444444')
+        story_3(callback.message)
+
+def story_3(message):
+    bot.send_message(message.chat.id, '5555555')
+
 # ***************************************************************************************************************************************
 
 
