@@ -1,7 +1,7 @@
 import telebot
 from random import randint
 from time import sleep
-token = "6781458985:AAGc5-FOdcf32qob04h0Q2X0Xk5Ocwbks3k"
+token = "6781458985:AAHEVM1NIQVZlr76Pbt_abzEy872bOpaym4"
 name = 0
 main = 1
 one = 0
@@ -14,6 +14,8 @@ lst = []
 bot = telebot.TeleBot(token)
 story_4 = 0
 story_5 = 0
+end_5 = 0
+end_55 = 0
 @bot.callback_query_handler(func=lambda callback: True)
 def func(callback):
     if callback.data == 'btn_1' or callback.data == 'btn_3' or callback.data == 'btn_2' or callback.data == 'btn_4':
@@ -22,8 +24,10 @@ def func(callback):
         func_2(callback)
     if callback.data == 'btn_15' or callback.data == 'btn_16' or callback.data == 'btn_17' or callback.data == 'btn_18' or callback.data == 'btn_19' or callback.data == 'btn_20' or callback.data == 'btn_21' or callback.data == 'btn_22' or callback.data == 'btn_23' or callback.data == 'btn_24' or callback.data == 'btn_25' or callback.data == 'btn_26':
         func_3(callback)
-    if callback.data == 'btn_27' or callback.data == 'btn_28' or callback.data == 'btn_29' or callback.data == 'btn_30' or callback.data == 'btn_31' or callback.data == 'btn_32' or callback.data == 'btn_33' or callback.data == 'btn_34' or callback.data == 'btn_35' or callback.data == 'btn_36' or callback.data == 'btn_37' or callback.data == 'btn_38' or callback.data == 'btn_39':
+    if callback.data == 'btn_27' or callback.data == 'btn_28' or callback.data == 'btn_29' or callback.data == 'btn_30' or callback.data == 'btn_31' or callback.data == 'btn_32' or callback.data == 'btn_33' or callback.data == 'btn_34' or callback.data == 'btn_35' or callback.data == 'btn_36' or callback.data == 'btn_37' or callback.data == 'btn_38' or callback.data == 'btn_39' or callback.data == 'btn_40' or callback.data == 'btn_41':
         func_4(callback)
+    if callback.data == callback.data == 'btn_42' or callback.data == 'btn_43' or callback.data == 'btn_44' or callback.data == 'btn_45' or callback.data == 'btn_46' or callback.data == 'btn_47':
+        func_5(callback)
 # Первая локация, начало истории*******************************************************************
 
 
@@ -361,6 +365,11 @@ def story_3(message):
         bot.send_photo(message.chat.id, photo, caption='Спустя пол дня вам наконец удаётся избавиться от преследования. Вы не знаете что вам делать. Решив просто продолжить путь через пару часов вы натыкаетесь на одиноко стоящую хижину. Вы окликаете её хозяина прося о помощи. Вдруг к вам выходит странный Орк одетый в чёрное одеяние. Он приветствует вас и говоря что знает кто вы приглашает в дом. Приветствуя его в ответ вы проходите за ним в хижину. Внутри куча страных вещей потипу черепов и высушиных трав.')
         bot.send_message(message.chat.id, 'Вы спрашиваете Орка кто он. Орк отвечает что он был изгнан из своего племени за то что стал чернокнижником. Он говорит что знал о том что вы прийдете к нему и он знаете что вы ищите, так сказали видения. Он говорит что вы уже заплатили нужную плату, поэтому он даст ответы на ваши вопросы. Вы начинаете разговор с ним и получаете нужную вам информацию. Он даёт вам одежду и немного припасов, так-же указывая вам дорогу. Вы благодарите его. Но вас мучает один вопрос, о какой плате он говорил? Орк начинаете громко смеятся. Через пару минут он успокаивается и начинает разговор. Он рассказывает о том как умерла Дуо, благодаря тому что вы решили сбежать тем самым бросив её. Вы злитесь на него и хотите вступить в бой, замечая это Орк говорит что вы сами выбрали такой путь, и что каждый поступок несёт за собой неисправимые последствия. Прощаясь свами Орк желает вам удачи и возвращается в хижину. Вы убиты горем. Вам ничего не остаётся кроме как отправиться дальше в путь.')
         two = 1
+        bot.send_message(message.chat.id, 'Выберите следующую главу:'
+                                          '/1 - Лес Эльфов\n'
+                                          '/3 - Подземелье Нечести\n'
+                                          '/4 - Пиратская Бухта\n'
+                                          '/end - Забытые развалины проклятого Королевства')
 
 def joke(message):
     global two
@@ -396,6 +405,8 @@ def three(message):
 @bot.callback_query_handler(func=lambda callback: True)
 def func_4(callback):
     global story_5
+    global end_5
+    global end_55
     if callback.data == 'btn_27':
         bot.delete_message(callback.message.chat.id, callback.message.message_id)
         markup = telebot.types.InlineKeyboardMarkup()
@@ -415,6 +426,7 @@ def func_4(callback):
         bot.send_photo(callback.message.chat.id, photo, caption='Решив хорошенько отдохнуть вы отправляетесь в Паб. Заказ выпивки вы хорошо проводите время в шумной компании. Ближе к ночи ваши пьяные собеседники уходят и в Пабе остаётся не так много людей. Погрузившись в мысли о ваших дальнейших действиях вы слышите разговор двух мужчин. Они говорят о страшилке проклятого подземелья. Мужчины обсуждают весь обсурт истории и сам факт что по легенде из-за Лича охроняющего артефакт оттуда ещё никто не возвращался живым. Подходя к ним вы спрашиваете где находится это так называемое Проклятое Подземелье. Мужчины рассказывают вам о руинах замка посреди леса. Поблагодарив их за это вы снимаете комнату и ложитесь спать. Вы знаете что будете делать с утра.')
         bot.send_message(callback.message.chat.id, 'Проснувшись вы собираете вещи и поблагодарив хозяина уходите. Перед выходом из деревни вы вспоминаете дорогу о которой вам рассказывали мужчины и собираетесь уходить. Почти покинув деревню сзади вас кто-то окликивает. Повернувшись вы видите молодого паренька. Парень говорит что знает куда вы идите и проситься взять его собой, говоря что знает где находится вход в Подземелье. Вы спрашиваете зачем ему это и откуда он знает куда вы направляетесь. Парень рассказывает о слухах пошедших по деревне, и о Фамильном Медальоне его семьи, хранащемся где-то в подземельи. Его помощь могла бы пригодится, но стоит ли вам брать его с собой?', reply_markup=markup)
     if callback.data == 'btn_30':
+        end_5 = 1
         lst.append('-')
         bot.delete_message(callback.message.chat.id, callback.message.message_id)
         markup = telebot.types.InlineKeyboardMarkup()
@@ -436,8 +448,12 @@ def func_4(callback):
     if callback.data == 'btn_33':
         bot.delete_message(callback.message.chat.id, callback.message.message_id)
         markup = telebot.types.InlineKeyboardMarkup()
-        btn_1 = telebot.types.InlineKeyboardButton('Право', callback_data='btn_34')
-        btn_2 = telebot.types.InlineKeyboardButton('Лево', callback_data='btn_35')
+        if end_5 == 1:
+            btn_1 = telebot.types.InlineKeyboardButton('Право', callback_data='btn_34')
+            btn_2 = telebot.types.InlineKeyboardButton('Лево', callback_data='btn_35')
+        elif end_5 == 2:
+            btn_1 = telebot.types.InlineKeyboardButton('Право', callback_data='btn_40')
+            btn_2 = telebot.types.InlineKeyboardButton('Лево', callback_data='btn_35')
         markup.add(btn_1, btn_2)
         photo = open('images/photo_5317058621143636702_x.jpg', 'rb')
         bot.send_photo(callback.message.chat.id, photo, caption='Проходя дальше вы натыкаетесь на Нечисть. Победив их вы замечаете что двое пришли Слева, а один справа. Куда вам пойти?', reply_markup=markup)
@@ -450,29 +466,45 @@ def func_4(callback):
         photo = open('images/photo_5317058621143636707_x.jpg', 'rb')
         bot.send_photo(callback.message.chat.id, photo, caption='Пройдя дальше перед вами снова развилка. Видно что по правому пути очень давно никто не ходил. А с лева наоборот можно заметить следы ступающей туда ноги человека. Куда же стоит пойти?', reply_markup=markup)
     if callback.data == 'btn_36':
+        if end_5 == 2 and end_55 == 0:
+            end_55 = 2
         bot.delete_message(callback.message.chat.id, callback.message.message_id)
         markup = telebot.types.InlineKeyboardMarkup()
         btn_1 = telebot.types.InlineKeyboardButton('Обмануть', callback_data='btn_37')
         btn_2 = telebot.types.InlineKeyboardButton('Вступить в бой', callback_data='btn_38')
         markup.add(btn_1, btn_2)
         photo = open('images/photo_5317058621143636708_x.jpg', 'rb')
-        bot.send_message(callback.message.chat.id, 'Пройдя ещё немного вы останавливается перед масивными дверьми, походу вы пришли в нужное вам место. Открывая двери вы входите в огромный зал. Наудивление по сравнению со всем Подземелье он выглядит слишком ухожено. В конце зала вы видите нужный вам артефакт. Пройдя в центр зала вы слышите голос у себя в голове: Кто ты? Зачем явился сюда? После этих слов перед вами предстаёт Лич. Вы сразу понимаете что вас ждёт. Лич говорит что удивлён вашими способностями и так уж и быть готов смилиться и не убивать вас. Он предлагает вам примкнуть к ниму, и стать его правой рукой. НА ВЕЧНОСТЬ. Вы сразу принимаете решение для себя, но что же вам стоит сказать ему?', reply_markup=markup)
+        bot.send_photo(callback.message.chat.id, photo, caption='Пройдя ещё немного вы останавливается перед масивными дверьми, походу вы пришли в нужное вам место. Открывая двери вы входите в огромный зал. Наудивление по сравнению со всем Подземелье он выглядит слишком ухожено. В конце зала вы видите нужный вам артефакт. Пройдя в центр зала вы слышите голос у себя в голове: Кто ты? Зачем явился сюда? После этих слов перед вами предстаёт Лич. Вы сразу понимаете что вас ждёт. Лич говорит что удивлён вашими способностями и так уж и быть готов смилиться и не убивать вас. Он предлагает вам примкнуть к ниму, и стать его правой рукой. НА ВЕЧНОСТЬ. Вы сразу принимаете решение для себя, но что же вам стоит сказать ему?', reply_markup=markup)
     if callback.data == 'btn_34':
         bot.delete_message(callback.message.chat.id, callback.message.message_id)
-        bot.send_message(callback.message.chat.id, 'Вы попадаете в ловушку. Получив небольшие ранения вы понимаете что это не тот путь и возвращаетесь назад что бы пойти в другой проход.')
+        bot.send_message(callback.message.chat.id, 'Вы попадаете в ловушку. Получив небольшие ранения вы понимаете что это не тот путь и возвращаетесь назад')
         story_5 = 1
         story_6(callback.message)
     if callback.data == 'btn_37':
         bot.delete_message(callback.message.chat.id, callback.message.message_id)
         bot.send_message(callback.message.chat.id, 'Я согласен, говорите вы и становитесь на колено перед Личом. Лич рад вашему выбору и начинает приближаться. Как только он подходит достаточно близко вы наносите удар. Получив солидный урон Лич понимает что вы его обманули и в ярости нападает на вас. Спустя долгое время вам удаётся одержать победу. Даже не смотря на ваш первый удар это все равно был очень тяжёлый бой. Вы подходите к Артефакту.')
-        story_5 = 2
+        if end_5 == 1:
+            story_5 = 2
+        elif end_5 == 2:
+            if end_55 == 1:
+                story_5 = 3
+            elif end_55 == 2:
+                story_5 = 4
         story_6(callback.message)
     if callback.data == 'btn_38':
         bot.delete_message(callback.message.chat.id, callback.message.message_id)
         bot.send_message(callback.message.chat.id, 'Вы говорите Личу что у вас небыло в планах присягать к кому нибудь на верность и вступаете в бой. Озлобленый Лич также начинает атаку. Спустя долгое время вам все-же удаётся нанести решающий удар. Всё, Лич пал. Это был очень тяжёлый бой для вас. Но вы наконец добирается до Артефакта.')
-        story_5 = 2
+        if end_5 == 1:
+            story_5 = 2
+        elif end_5 == 2:
+            if end_55 == 1:
+                story_5 = 3
+            elif end_55 == 2:
+                story_5 = 4
         story_6(callback.message)
     if callback.data == 'btn_29':
+        end_5 = 2
+        lst.append('+')
         bot.delete_message(callback.message.chat.id, callback.message.message_id)
         markup = telebot.types.InlineKeyboardMarkup()
         btn_1 = telebot.types.InlineKeyboardButton('Обойти', callback_data='btn_39')
@@ -487,16 +519,46 @@ def func_4(callback):
         btn_2 = telebot.types.InlineKeyboardButton('Лево', callback_data='btn_34')
         markup.add(btn_1, btn_2)
         bot.send_message(callback.message.chat.id, 'Вы почти обходите Нежить но ваш товарищ падает, тем самым выдавая вас. Нежить атакует и вы вступаете в битву. Спустя некоторое  время вы побеждаете. Проходя дальше вы видите развилку, куда вам пойти?', reply_markup=markup)
+    if callback.data == 'btn_40':
+        bot.delete_message(callback.message.chat.id, callback.message.message_id)
+        markup = telebot.types.InlineKeyboardMarkup()
+        btn_1 = telebot.types.InlineKeyboardButton('Право', callback_data='btn_41')
+        btn_2 = telebot.types.InlineKeyboardButton('Лево', callback_data='btn_41')
+        markup.add(btn_1, btn_2)
+        bot.send_message(callback.message.chat.id, 'Проходя дальше перед вами снова развилка, прохода с права, весь пошарпаный и старый. Или Левый новый и походу ещё никем не тронутый.', reply_markup=markup)
+    if callback.data == 'btn_41':
+        end_55 = 1
+        bot.delete_message(callback.message.chat.id, callback.message.message_id)
+        markup = telebot.types.InlineKeyboardMarkup()
+
+        btn_1 = telebot.types.InlineKeyboardButton('Обмануть', callback_data='btn_37')
+        btn_2 = telebot.types.InlineKeyboardButton('Вступить в бой', callback_data='btn_38')
+        markup.add(btn_1, btn_2)
+        photo = open('images/photo_5317058621143636708_x.jpg', 'rb')
+        bot.send_message(callback.message.chat.id, 'Вы проходите дальше по коридору но снова наступаете в ловушку. Уворичаваясь вы видите что ваш товарищ не успевает этого сделать. Всё что вам оставалось делать это смотреть как ловушка пронзает вашего товарища. Подходя к нему вы понимаете что рана смертельная. Перед смертью ваш друг просит вас неоставлять его здесь и умирает. Вы обещаете что вернётесь за ним и возвращаетесь чтобы пойти по правильному пути.')
+        bot.send_photo(callback.message.chat.id, photo, caption='Пройдя ещё немного вы останавливается перед масивными дверьми, походу вы пришли в нужное вам место. Открывая двери вы входите в огромный зал. Наудивление по сравнению со всем Подземелье он выглядит слишком ухожено. В конце зала вы видите нужный вам артефакт. Пройдя в центр зала вы слышите голос у себя в голове: Кто ты? Зачем явился сюда? После этих слов перед вами предстаёт Лич. Вы сразу понимаете что вас ждёт. Лич говорит что удивлён вашими способностями и так уж и быть готов смилиться и не убивать вас. Он предлагает вам примкнуть к ниму, и стать его правой рукой. НА ВЕЧНОСТЬ. Вы сразу принимаете решение для себя, но что же вам стоит сказать ему?', reply_markup=markup)
 def story_6(message):
-     if story_5 == 1:
-         markup = telebot.types.InlineKeyboardMarkup()
-         btn_1 = telebot.types.InlineKeyboardButton('Право', callback_data='btn_33')
-         btn_2 = telebot.types.InlineKeyboardButton('Лево', callback_data='btn_34')
-         markup.add(btn_1, btn_2)
-         bot.send_message(message.chat.id, 'Спустя некоторое время перед вами появляется развилка. Куда вам пойти?', reply_markup=markup)
-     elif story_5 == 2:
-         photo = open('images/photo_5317058621143636710_x.jpg', 'rb')
-         bot.send_photo(message.chat.id, photo, caption='Взяв Артефакт вы попадаете в хранилище знаний хранящееся в нем. Тут вы находите нужную вам информацию и даже узнаете кое-что новое о магии. Это явно вам поможет. Вы обыскиваете зал на наличие выхода. Найдя выход вы выходите на окраине леса. Кладя Артефакт в сумку вы думаете что же вам делать дальше. Вы видите вдалеке повозку и ответ сам приходит к вам. Отправляясь к ней вы покидает лес, ваш путь все еще продолжается. Впереди у вас ещё много приключений.')
+    global three
+    if story_5 == 1:
+        markup = telebot.types.InlineKeyboardMarkup()
+        btn_1 = telebot.types.InlineKeyboardButton('Право', callback_data='btn_33')
+        btn_2 = telebot.types.InlineKeyboardButton('Лево', callback_data='btn_34')
+        markup.add(btn_1, btn_2)
+        bot.send_message(message.chat.id, 'Спустя некоторое время перед вами появляется развилка. Куда вам пойти?', reply_markup=markup)
+    elif story_5 == 2:
+        photo = open('images/photo_5317058621143636710_x.jpg', 'rb')
+        bot.send_photo(message.chat.id, photo, caption='Взяв Артефакт вы попадаете в хранилище знаний хранящееся в нем. Тут вы находите нужную вам информацию и даже узнаете кое-что новое о магии. Это явно вам поможет. Вы обыскиваете зал на наличие выхода. Найдя выход вы выходите на окраине леса. Кладя Артефакт в сумку вы думаете что же вам делать дальше. Вы видите вдалеке повозку и ответ сам приходит к вам. Отправляясь к ней вы покидает лес, ваш путь все еще продолжается. Впереди у вас ещё много приключений.')
+        three = 1
+    elif story_5 == 3:
+        photo = open('images/photo_5344038974336916150_x.jpg', 'rb')
+        bot.send_photo(message.chat.id, photo, caption='Взяв Артефакт вы попадаете в хранилище знаний хранящееся в нем. Тут вы находите нужную вам информацию и даже узнаете кое-что новое о магии. Это явно вам поможет. Закончив вы не забываете про обещание вашу союзнику и возвращаетесь за его телом. Обыскав зал на наличие выхода вам все-же удаётся выбраться из этого проклятого места. Попав на ружу вы оказываетесь в лесу. Отойдя как можно дальше это этого чёртового места вы хороните вашего друга и с помощью магии делаете надгробие. Вы понимаете что вам нужно сделать и возвращаетесь в деревню. По возвращению вы ходите по деревне пытаясь найти семью вашего друга. Походив по деревне довольно долго вам все же удаётся найти семью вашего товарища. Вы рассказываете им всю правду о том что произошло, и также сообщаете о его цели и мотивации отправиться туда. Вы сообщаете им о месте где захоранили его и как туда дойти. Семью окатывает горе. Вы прощаетесь говоря что вам жаль что вы не смогли его спасти и уходите.')
+        bot.send_message(message.chat.id, 'Вы выходите в центр деревни и начинаете привлекать людей. Вскоре около вас собралась вся деревня. Вы повествуете им о том как ваш друг пожертвовал собой чтобы спасти вас, тем самым вы смогли победить Лича и снять Проклятие Подземелья. Вы говорите что если бы не он то вы бы погибли там, и очищено оно только благодаря ему. Вы просите почтить его подвиг, староста благодарит вас и обещает что они почтят его подвиг статуей и некогда его не забудут. Закончив вы направляетесь к выходу. Перед выходом семье вашего друга нагоняет вас и благодарит за вашу историю. Вы говорите что это меньшее что вы могли сделать и попрощавшись выходите из деревни. Ещё раз посмотрев на Артефакт вы кладёте его обратно в сумку и отправляетесь в путь.')
+        three = 1
+    elif story_5 == 4:
+        photo = open('images/photo_5344038974336916150_x.jpg', 'rb')
+        bot.send_photo(message.chat.id, photo, caption='Взяв Артефакт вы попадаете в хранилище знаний хранящееся в нем. Тут вы находите нужную вам информацию и даже узнаете кое-что новое о магии. Это явно вам поможет. Закончив, вы обыскеваете тело Лича и находите там неизвестный вам Медальон. Вы показываете его другу и он говорит что это и есть его семейный Медальон. Вы говорите что друг можете его забрать, ведь это его вещь ради которой он рисковал жизнью. Ваш друг благодарит вас и с радостью забирает его. Решив что пора выбираться вы обыскиваете зал на наличие выхода. Найдя выход вы выходите на окраине леса. Ваш новый друг благодарит вас за все и говорит что не когда этого не забудет. Вы также благодарите его и прощаетесь. Попращавшись ваш друг возвращается в деревню. Вы провожаете его взглядом и через несколько минут остаётесь одни. Кладя Артефакт в сумку вы думаете что же вам делать дальше. Вы видите вдалеке повозку и ответ сам приходит к вам. Отправляясь к ней вы покидает лес, ваш путь все еще продолжается. Впереди у вас ещё много приключений.')
+        three = 1
+
 
 # *******************************************************************************************************************************************
 
@@ -507,9 +569,50 @@ def four(message):
     if four == 1:
         bot.send_message(message.chat.id, 'Вы уже проходили эту главу')
     elif main:
-        pass
+        markup = telebot.types.InlineKeyboardMarkup()
+        btn_1 = telebot.types.InlineKeyboardButton('Ночлег', callback_data='btn_42')
+        btn_2 = telebot.types.InlineKeyboardButton('Продолжать искать', callback_data='btn_43')
+        markup.add(btn_1, btn_2)
+        photo = open('images/photo_5343556683869315374_x.jpg', 'rb')
+        bot.send_photo(message.chat.id, photo, caption='Шёл 3 день вашей дороги. Спустя ещё пол дня вы наконец добрались до нужного вам места, Пиратской Бухты. Один из ваших проводников рассказывал легенду о Древнем кладе спрятаном где-то у бухты. Понимая что за информация там может храниться вы немогли упустить такой шанс. Прибыв на место вы долго ходили по бухте и пытались узнать хоть что нибудь о кладе. Но уже темнеет а никакую информацию вам найти так и не удалось. Может лучше просто отправиться на ночлег?', reply_markup=markup)
     else:
         bot.send_message(message.chat.id, 'Для прохождения этой главы пройдите /start')
+
+@bot.callback_query_handler(func=lambda callback: True)
+def func_5(callback):
+    if callback.data == 'btn_42':
+        bot.delete_message(callback.message.chat.id, callback.message.message_id)
+        markup = telebot.types.InlineKeyboardMarkup()
+        btn_1 = telebot.types.InlineKeyboardButton('Игнор', callback_data='btn_44')
+        btn_2 = telebot.types.InlineKeyboardButton('Помощь', callback_data='btn_45')
+        markup.add(btn_1, btn_2)
+        bot.send_message(callback.message.chat.id, 'Проходя по улицам бухты вы пытаетесь найти место где можно переночевать. Проходя мимо очередного здания в переулке слева от себя вы слышите странные звуки. Пытаясь узнать причину вы проходите в переулок и видите как группа бандитов окружила неизвестную фигуру в плаще. Стоит ли вам вмешаться? Или же, лучше просто проигнорировать ситуацию?', reply_markup=markup)
+    if callback.data == 'btn_43':
+        bot.delete_message(callback.message.chat.id, callback.message.message_id)
+        markup = telebot.types.InlineKeyboardMarkup()
+        btn_1 = telebot.types.InlineKeyboardButton('Игнор', callback_data='btn_44')
+        btn_2 = telebot.types.InlineKeyboardButton('Помощь', callback_data='btn_45')
+        markup.add(btn_1, btn_2)
+        bot.send_message(callback.message.chat.id, 'Вы все также ходите по улицам в поисках информации но так ничего и не находите. Решив продолжить завтра вы отправляетесь искать место для ночлега.')
+        bot.send_message(callback.message.chat.id, 'Проходя по улицам бухты вы пытаетесь найти место где можно переночевать. Проходя мимо очередного здания в переулке слева от себя вы слышите странные звуки. Пытаясь узнать причину вы проходите в переулок и видите как группа бандитов окружила неизвестную фигуру в плаще. Стоит ли вам вмешаться? Или же, лучше просто проигнорировать ситуацию?',reply_markup=markup)
+    if callback.data == 'btn_44':
+        bot.delete_message(callback.message.chat.id, callback.message.message_id)
+        markup = telebot.types.InlineKeyboardMarkup()
+        btn_1 = telebot.types.InlineKeyboardButton('Игнор', callback_data='btn_46')
+        btn_2 = telebot.types.InlineKeyboardButton('Помощь', callback_data='btn_45')
+        markup.add(btn_1, btn_2)
+        photo = open('images/photo_5343556683869315382_x.jpg', 'rb')
+        bot.send_photo(callback.message.chat.id, photo, caption='Решив не вмешиваться вы остаётесь наблюдать из далека. Бандиты говорят отдать им карту древнего сокровища, но фигура стоит на своё и отказывает бандитам. Спустя недолгое время завязывается драка. Вы видите как в середине драки неизвестный вам человек выкидывает странный мешочек в канаву неподалёку. Может все же стоит помочь?', reply_markup=markup)
+    if callback.data == 'btn_46':
+        bot.delete_message(callback.message.chat.id, callback.message.message_id)
+        photo = open('images/photo_5343556683869315385_x.jpg', 'rb')
+        bot.send_photo(callback.message.chat.id, photo, caption='Спустя ещё пару минут один из бандитов оголяет нож и все быстро заканчивается. Неполучив желаемого бандиты быстро уходят. Вы видите как бездыханное тело незнакомца падает на землю. Убедившись что бандиты ушли вы поддаётесь своему интересу и подходите. Убедившись что неизвестный мёртв и вам уже никак ему не помочь вы забираете таинственный мешок. Открывая вы видите там карту. Ответ на "что это за карта?" приходит почти сразу. Поняв всю ценность вещи вы решаете разобраться с этим завтра и уходите. Найдя гостиницу вы снимаете там комнату и в связи с усталостью быстро засыпаете.')
+    if callback.data == 'btn_45':
+        bot.delete_message(callback.message.chat.id, callback.message.message_id)
+        photo_1 = open('images/photo_5343556683869315382_x.jpg', 'rb')
+        photo_2 = open('images/photo_5343556683869315385_x.jpg', 'rb')
+        bot.send_photo(callback.message.chat.id, photo_1, caption='Вы все таки решаете вмешаться. Вы окликиваете группу и говорите им отстать от незнакомца. Бандиты удивлены вашим присутствием и достают оружие говоря вам уйти. Вы сразу понимаете что сейчас будет и вступаете в бой. Вскоре все заканчивается вашей победой. Побитые бандиты быстро уходят говоря что ещё встретятся с вами. Незнакомец благодарит вас за помощь. Вы говорите что это было не сложно и собираетесь уходить. Незнакомец останавливает вас и желая отблагодарить даёт вам неизвестный мешочек, говоря что он поможем вам найти древнее сокровище. Вы благодарите его и он уходит.')
+        bot.send_photo(callback.message.chat.id, photo_2, caption='Открыв мешочек вы находите внутри лишь карту. Открыв её вы понимаете о чем говорил незнакомец. Понимая что это за карта и куда она может вас привести вы решаете разобраться с этим завтра и кладёте её обратно. Понимая что пора искать ночлег вы уходите. Найдя ночлег вы снимаете комнату и в связи с усталостью быстро погружаетесь в сон.')
 # ************************************************************************************************************************************************
 
 
