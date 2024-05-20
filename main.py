@@ -16,6 +16,7 @@ story_4 = 0
 story_5 = 0
 end_5 = 0
 end_55 = 0
+story_8 = 0
 @bot.callback_query_handler(func=lambda callback: True)
 def func(callback):
     for i in range(1, 5):
@@ -589,6 +590,8 @@ def four(message):
 
 @bot.callback_query_handler(func=lambda callback: True)
 def func_5(callback):
+    global story_8
+    global four
     if callback.data == 'btn_42':
         bot.delete_message(callback.message.chat.id, callback.message.message_id)
         markup = telebot.types.InlineKeyboardMarkup()
@@ -617,6 +620,8 @@ def func_5(callback):
         bot.delete_message(callback.message.chat.id, callback.message.message_id)
         photo = open('images/photo_5343556683869315385_x.jpg', 'rb')
         bot.send_photo(callback.message.chat.id, photo, caption='Спустя ещё пару минут один из бандитов оголяет нож и все быстро заканчивается. Неполучив желаемого бандиты быстро уходят. Вы видите как бездыханное тело незнакомца падает на землю. Убедившись что бандиты ушли вы поддаётесь своему интересу и подходите. Убедившись что неизвестный мёртв и вам уже никак ему не помочь вы забираете таинственный мешок. Открывая вы видите там карту. Ответ на "что это за карта?" приходит почти сразу. Поняв всю ценность вещи вы решаете разобраться с этим завтра и уходите. Найдя гостиницу вы снимаете там комнату и в связи с усталостью быстро засыпаете.')
+        story_8 = 1
+        story_7(callback.message)
     if callback.data == 'btn_45':
         bot.delete_message(callback.message.chat.id, callback.message.message_id)
         photo_1 = open('images/photo_5343556683869315382_x.jpg', 'rb')
@@ -624,6 +629,54 @@ def func_5(callback):
         bot.send_photo(callback.message.chat.id, photo_1, caption='Вы все таки решаете вмешаться. Вы окликиваете группу и говорите им отстать от незнакомца. Бандиты удивлены вашим присутствием и достают оружие говоря вам уйти. Вы сразу понимаете что сейчас будет и вступаете в бой. Вскоре все заканчивается вашей победой. Побитые бандиты быстро уходят говоря что ещё встретятся с вами. Незнакомец благодарит вас за помощь. Вы говорите что это было не сложно и собираетесь уходить. Незнакомец останавливает вас и желая отблагодарить даёт вам неизвестный мешочек, говоря что он поможем вам найти древнее сокровище. Вы благодарите его и он уходит.')
         sleep(8)
         bot.send_photo(callback.message.chat.id, photo_2, caption='Открыв мешочек вы находите внутри лишь карту. Открыв её вы понимаете о чем говорил незнакомец. Понимая что это за карта и куда она может вас привести вы решаете разобраться с этим завтра и кладёте её обратно. Понимая что пора искать ночлег вы уходите. Найдя ночлег вы снимаете комнату и в связи с усталостью быстро погружаетесь в сон.')
+        story_8 = 1
+        story_7(callback.message)
+    if callback.data == 'btn_47':
+        lst.append('-')
+        bot.delete_message(callback.message.chat.id, callback.message.message_id)
+        bot.send_message(callback.message.chat.id, 'Понимая, что чем быстрее вы закончите тем раньше продолжите путь вы решаете все-же Продать карту. Отправившись на рынок вы думаете как именно вам стоит её продать. Решив что лучше довериться профессионалу вы отправляетесь в местное отделение оценки предметов. Когда вы заходите перед вами предстаёт огромная куча разного антиквариата. Продавец за стокойкой подзывает вас и спрашивает что именно вас интересует')
+        sleep(5)
+        bot.send_message(callback.message.chat.id, 'Вы обьясняете ему свою ситуацию и спрашиваете про карту. Продавец отвечает что карта настолько старая что цена на неё просто огромная. Говоря что с радостью готов у вас её купить продавец протягивает вам огромный мешок золота. Пожимая ему руку вы говорите что рады были иметь с ним дело и забрав золото уходите. Всю следующую ночь вы отдыхаете невчем себе не отказывая. С утра вы собираете вещи и довольный покидаете бухту.')
+        four = 1
+    if callback.data == 'btn_48':
+        lst.append('+')
+        bot.delete_message(callback.message.chat.id, callback.message.message_id)
+        markup = telebot.types.InlineKeyboardMarkup()
+        btn_1 = telebot.types.InlineKeyboardButton('Аккуратно', callback_data='btn_49')
+        btn_2 = telebot.types.InlineKeyboardButton('Напролом', callback_data='btn_50')
+        markup.add(btn_1, btn_2)
+        bot.send_message(callback.message.chat.id, 'Решив что это будет весёлое приключения вы отправляетесь в путь указанный на карте. Спустя три дня и две ночи вам наконец удаётся найти клад, точнее место где он спрятан. Перед вами огромный храм, войдя внутрь вы видите длинный коридор. Наверняка в нем есть ловушки. Как же их обойти?', reply_markup=markup)
+    if callback.data == 'btn_49':
+        bot.delete_message(callback.message.chat.id, callback.message.message_id)
+        markup = telebot.types.InlineKeyboardMarkup()
+        btn_1 = telebot.types.InlineKeyboardButton('Забрать', callback_data='btn_51')
+        btn_2 = telebot.types.InlineKeyboardButton('Перевести', callback_data='btn_52')
+        markup.add(btn_1, btn_2)
+        bot.send_message(callback.message.chat.id, 'Пройдя коридор вы оказываетесь в середине какого-то зала.Вы видите странные надписи на стенах, а в середине стоит сундук с вашим сокровищем. Стоит ли вам перевести текста или же лучше не тратить время и сразу забрать сокровище?', reply_markup=markup)
+    if callback.data == 'btn_51':
+        bot.send_message(callback.message.chat.id, 'Решив не тратить время вы открываете сундук и тут же вас окутывает странное чувство, как будто что-то вырвалось из этого сундука. Не придавая этому значения вы залазите в сундук и помимо надписей с нужным вам текстом находите там ещё и странный артефакт. Как только вы берёте его в руки вы чувствуете прилив сил и усиление своей маны. Забирая его собой вы в отличном настроении покидаете храм и отправляетесь дальше в путь')
+        four = 1
+    if callback.data == 'btn_52':
+        bot.send_message(callback.message.chat.id, 'Решив не спешить вы решаете перевести надписи на стенах. Переведя все вы наудивление узнаете нужную вам информацию и о проклятье, охроняющем артефакт в сундуке. Единственный способ избежать его, уничтожить сундук вместе с Артефактом. Понимая какие беды может принести выпущеное проклятье вы решаетесь уничтожить сундук. Использовав магию Огня вы испипеляете сундук со всем его содержимым. Хоть вам и жалко утеряный артефакт вы понимаете что приняли правильное решение и покидаете храм в поиске новых приключений')
+        four = 1
+    if callback.data == 'btn_50':
+        bot.delete_message(callback.message.chat.id, callback.message.message_id)
+        markup = telebot.types.InlineKeyboardMarkup()
+        btn_1 = telebot.types.InlineKeyboardButton('Забрать', callback_data='btn_51')
+        btn_2 = telebot.types.InlineKeyboardButton('Перевести', callback_data='btn_52')
+        markup.add(btn_1, btn_2)
+        bot.send_message(callback.message.chat.id,'Решив не мелочиться вы разрушаете все ловушки встроенные в проход с помощью магии. Решив что это все вы продвигаетесь дальше как тут на вас нападают охранные големы. Похоже это защитный механизм храма. Вам ничего не остаётся кроме как сражаться. Спустя долгое время вы все-же выигрываете. Это был тяжёлый бой, думаете вы и продвигаетесь дальше')
+        sleep(6)
+        bot.send_message(callback.message.chat.id,'Пройдя коридор вы оказываетесь в середине какого-то зала.Вы видите странные надписи на стенах, а в середине стоит сундук с вашим сокровищем. Стоит ли вам перевести текста или же лучше не тратить время и сразу забрать сокровище?',reply_markup=markup)
+def story_7(message):
+    if story_8 == 1:
+        sleep(8)
+        markup = telebot.types.InlineKeyboardMarkup()
+        btn_1 = telebot.types.InlineKeyboardButton('Продать', callback_data='btn_47')
+        btn_2 = telebot.types.InlineKeyboardButton('Найти самому', callback_data='btn_48')
+        markup.add(btn_1, btn_2)
+        bot.send_message(message.chat.id, 'Проснувшись вы вспоминаете о произошедшем вчера и думаете о том как именно вам стоит поступить. С одной стороны вы можете поискать покупателя и спокойно продать карту, с другой же   вы сами можете отправиться в путь и отыскать сокровище', reply_markup=markup)
+
 # ************************************************************************************************************************************************
 
 
@@ -632,7 +685,6 @@ def func_5(callback):
 @bot.message_handler(commands=['end'])
 def end(message):
     if one == 1 and two == 1 and three == 1 and four == 1:
-
         pass
     else:
         bot.send_message(message.chat.id, 'Для прохождения этой главы пройдите главы: /1\n /2\n /3\n /4')
